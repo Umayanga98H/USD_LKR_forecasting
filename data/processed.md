@@ -6,7 +6,7 @@ The resulting dataset contains 12,680 rows spanning 2 January 1975 to 16 April 2
 
 # USD/LKR Exchange Rate and Gold Price Overview (1975–2026)
 
-![USD/LKR Exchange Rate and Gold Price 1975-2026](images/usd_lkr_gold_1975_2026_overview.png)
+![USD/LKR Exchange Rate and Gold Price 1975-2026](images/01_time_series_overview.png)
 
 ## Interpretation
 
