@@ -1,7 +1,5 @@
+## Processed Dataset: usd_lkr_gold_cleaned.csv
 
-## Combined Dataset Date Range and Overlap
+This file is the cleaned and merged output of the data cleaning notebook, combining the three raw USD/LKR exchange rate files and the gold price dataset into a single time-indexed table. The two sources were parsed to a consistent date format, sorted chronologically, deduplicated, and joined on matching dates using an inner join, retaining only dates present in both datasets. 
 
-The USD/LKR exchange rate dataset and the gold price dataset are merged on an inner join basis, retaining only dates present in both sources. 
-Within the common date range of 2 January 1975 to 16 April 2026, the USD/LKR dataset contributes 12,819 rows and the gold dataset contributes 13,100 rows. 
-After merging on matching dates, the final combined dataset contains 12,680 rows, representing approximately 98.9% of the USD/LKR data and 96.8% of the gold data. 
-The small reduction reflects non-overlapping trading/public holidays between the Sri Lankan and global gold markets, where one market was open while the other was closed.
+The resulting dataset contains 12,680 rows spanning 2 January 1975 to 16 April 2026, with eight columns: `lkr_close`, `lkr_open`, `lkr_high`, `lkr_low`, `gold_open`, `gold_high`, `gold_low`, and `gold_close`. There are no missing values in the final dataset. This file serves as the foundation for the exploratory data analysis and feature engineering stages of the project.
