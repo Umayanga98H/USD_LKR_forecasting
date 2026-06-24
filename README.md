@@ -36,3 +36,14 @@ The 1980 spike is clearly visible, where gold rose sharply toward $800/oz driven
 ##### Combined Interpretation
 
 The period from 2022 onward is the only point in the 50-year history where both series exhibit extreme, simultaneous movement: the LKR collapsing sharply while gold continues its aggressive ascent. Viewed against the full historical record, this co-movement during a period of acute economic stress stands out as unusual relative to the long-run relationship between the two series, providing supporting evidence for the safe-haven hypothesis underpinning the inclusion of gold as a predictive feature in this project.
+
+##### The Relationship Between the Two
+
+Look at the two panels together at the major crisis points:
+
+- **1980 spike** → gold surges sharply on geopolitical shocks (Iranian Revolution, Soviet invasion of Afghanistan), while the LKR — still in the early post-liberalisation period — shows only mild movement, since global gold shocks had limited direct channels into the still-developing Sri Lankan economy at the time
+- **2008 GFC** → gold surges sharply while the LKR also shows a noticeable uptick in its rate of depreciation — both react to the same global risk-off shock
+- **2020 COVID** → same pattern repeats — gold hits new highs, while the LKR continues depreciating at a steady pace, slightly more pronounced than the pre-2020 trend
+- **2022 crisis** → the LKR collapses catastrophically, the most extreme move in the entire 50-year history. Gold was already in a strong upward trend, consistent with the safe-haven theory cited in the proposal — global investors had already been moving toward gold before the LKR crisis fully unfolded
+
+***This visual already provides strong intuitive support for argument that gold carries predictive signal for LKR movements — both series respond to the same global economic stress events.
