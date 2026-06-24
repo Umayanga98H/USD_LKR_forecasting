@@ -9,7 +9,15 @@
 
 This project uses two datasets: historical USD/LKR exchange rate data sourced from [Investing.com](https://www.investing.com/currencies/usd-lkr-historical-data), covering 2 January 1975 to 16 April 2026, and historical gold price (XAUUSD) data sourced from [Stooq](https://stooq.com/q/?s=xauusd), with underlying commodity pricing provided by Barchart, covering 1 March 1793 to 9 June 2026. 
 The two datasets are cleaned, filtered, and merged on matching dates to form a single time-indexed dataset spanning 1975 to 2026, which is used throughout the data analysis and modelling stages of the project. 
-Further details on each dataset are documented in [raw.md](data/raw.md), and the final merged dataset is documented in [processed.md](data/processed.md) and saved as [usd_lkr_gold_cleaned.csv](data/usd_lkr_gold_cleaned.csv). This contains 12,680 rows spanning 2 January 1975 to 16 April 2026, with eight columns: lkr_close, lkr_open, lkr_high, lkr_low, gold_open, gold_high, gold_low, and gold_close.
+Further details on each dataset are documented in [raw.md](data/raw.md), and the final merged dataset is documented in [processed.md](data/processed.md) and saved as [usd_lkr_gold_cleaned.csv](data/usd_lkr_gold_cleaned.csv). This contains 12,680 rows spanning 2 January 1975 to 16 April 2026, with eight columns: 
+1. lkr_close - The closing price of USD/LKR at the end of that trading day — e.g. 71.50 means 1 USD = 71.50 Sri Lankan Rupees at market close. This is the main target variable for forecasting
+2. lkr_open - The opening price at the start of that trading day
+3. lkr_high - The highest rate reached during that day
+4. lkr_low - The lowest rate reached during that day
+5. gold_open - Gold price in USD per troy ounce at market open that day
+6. gold_high - Highest gold price reached during that day
+7. gold_low - Lowest gold price reached during that day
+8. gold_close - Gold price at market close — this is the main gold feature for modelling
 
 ### USD/LKR Exchange Rate and Gold Price Overview (1975–2026)
 
