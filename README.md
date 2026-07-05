@@ -47,3 +47,6 @@ Look at the two panels together at the major crisis points:
 - **2022 crisis** → the LKR collapses catastrophically, the most extreme move in the entire 50-year history. Gold was already in a strong upward trend, consistent with the safe-haven theory cited in the proposal — global investors had already been moving toward gold before the LKR crisis fully unfolded
 
 ***This visual already provides strong intuitive support for argument that gold carries predictive signal for LKR movements — both series respond to the same global economic stress events.
+
+### After considering EDA Final Conclusion:
+Across the full 50-year history, gold shows no stable, always-present linear relationship with LKR — the earlier marginal. Granger result was specific to the 2000-2022 window and likely driven by the 2022 crisis period. The relationship instead appears to be regime-dependent, intensifying during global stress events. This further strengthens the case for a flexible hybrid model(LSTM/GRU/XGBoost) capable of learning crisis-dependent, non-linear patterns, rather than a simple linear model assuming a constant gold-LKR relationship across all market regimes.
