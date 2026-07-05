@@ -16,3 +16,7 @@ The 252-day LKR volatility line stays close to zero for almost the entire 1975-2
 ![252-Day Rolling Correlation:USD/LKR Retuurns vs Gold Returns](images/02d_rolling_correlation.png)
 ##### Interpretation 
 With the full 50-year history, the rolling correlation continues to oscillate between positive and negative — confirming the relationship between gold and LKR is NOT static across the entire historical record, not just the 2000-2022 window. A single full-sample correlation figure would be misleading; the relationship is regime-dependent and tends to shift around global stress events, consistent with the safe-haven theory.
+
+![Rolling Volatility(Annualised Standard Deviation of Log Returns](images/02c_rolling_volatility.png)
+Interpretation:
+Very strong positive correlation ({pearson_r:.2f}), stronger even than in the 2000-2022 subset (previously 0.71). This is SPURIOUS — both series trend upward over the full 50-year period, which inflates the raw-price correlation. This does NOT imply a causal or even meaningfully linear relationship.
