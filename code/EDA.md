@@ -4,3 +4,7 @@ LKR price: extremely right-skewed — the 1975-1977 pegged-rate era produces a l
 Gold price: right-skewed across a much wider range now that 50 years of history are included, from the ~$300s in the 1970s-90s up to the >$5,000 levels reached by 2026.
 Log returns: LKR returns are now extremely leptokurtic (skew ≈ 53, kurtosis ≈ 4,650) — this is a direct consequence of the 1975-1977 fixed exchange rate period, where daily returns were ~0 for long stretches, combined with the extreme 2022 depreciation tail. This is a much more extreme distribution than the 2000-2022 subset previously examined, and confirms the LKR series contains genuine regime changes that models must account for.
 Gold returns: kurtosis ≈ 15.0, skew ≈ -0.29 — still fat-tailed but far closer to typical financial-asset behaviour than the LKR series.
+
+
+##### Interpretation
+The LKR panel now clearly shows a flat, near-zero-volatility stretch from 1975-1977 (fixed exchange rate), followed by low but non-zero daily movement after liberalisation, and then the extreme spike in 2022 that dwarfs all prior activity. The gold panel shows volatility clustering around all three major events (1980, 2008, 2020), confirming gold behaves as a continuously-traded asset throughout, in contrast to the LKR's policy-driven quiet periods. This justifies the use of GARCH to capture time-varying volatility, and confirms the 2022 LKR crisis should be treated as a structural break rather than ordinary volatility.
