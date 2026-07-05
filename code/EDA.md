@@ -17,6 +17,27 @@ The 252-day LKR volatility line stays close to zero for almost the entire 1975-2
 ##### Interpretation 
 With the full 50-year history, the rolling correlation continues to oscillate between positive and negative — confirming the relationship between gold and LKR is NOT static across the entire historical record, not just the 2000-2022 window. A single full-sample correlation figure would be misleading; the relationship is regime-dependent and tends to shift around global stress events, consistent with the safe-haven theory.
 
-![Rolling Volatility(Annualised Standard Deviation of Log Returns](images/02c_rolling_volatility.png)
-Interpretation:
+![SLT Decomposition-USD/LKR Close](images/02e_stl_usdlkr_close.png)
+![SLT Decomposition-Gold Close](images/02e_stl_gold_close.png)
+##### Interpretation:
 Very strong positive correlation ({pearson_r:.2f}), stronger even than in the 2000-2022 subset (previously 0.71). This is SPURIOUS — both series trend upward over the full 50-year period, which inflates the raw-price correlation. This does NOT imply a causal or even meaningfully linear relationship.
+
+![Scatter:Gold vs LKR Log Returns](images/02f_returns_scatter.png)
+##### Interpretation
+No statistically significant linear correlation on daily log returns over the full history (p = 0.109). The relationship is likely non-linear and time-varying — see the rolling correlation plot above.
+
+###### Key finding - Augmented Dicker-Fuller Stationarity Test
+Raw prices remain NON-STATIONARY over the full 50-year history (p ≈ 1.0 for both series — even stronger evidence of a unit root than in the shorter subset).
+Log returns ARE STATIONARY (p ≈ 0.00) for both series.
+Models must be trained on log returns, not raw prices.
+ARIMA will need d=1 differencing on price series.
+
+###### Key finding - Granger Casuality Test
+Over the full 50-year history, Granger causalityfrom gold to LKR returns is NOT statistically significant at any of lags 1-5 (all p > 0.10). This differs from the earlier 2000-2022 subset, where lags 3-5 showed marginal significance.
+The earlier result was likely driven disproportionately by the 2022 crisis period; diluted across 50 years of mostly calm,policy-managed exchange rate behaviour, the average effect is no longer detectable by a simple linear Granger test.
+This itself is an important finding: it suggests gold's predictive relationship with LKR is CRISIS-DEPENDENT rather than a stable, ever-present linear effect, reinforcing the case for a flexible, non-linear model (LSTM/GRU/XGBoost) over a simple linear approach.
+
+#### Final Conclusion:
+Across the full 50-year history, gold shows no stable, always-present linear relationship with LKR — the earlier marginal.
+Granger result was specific to the 2000-2022 window and likely driven by the 2022 crisis period. The relationship instead appears to be regime-dependent, intensifying during global stress events.
+This further strengthens the case for a flexible hybrid model(LSTM/GRU/XGBoost) capable of learning crisis-dependent, non-linear patterns, rather than a simple linear model assuming a constant gold-LKR relationship across all market regimes.
