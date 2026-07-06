@@ -1,4 +1,5 @@
 ![Distribution Analysis_Prices and Log Returns](images/02a_distributions.png)
+![USD/LKR Exchange Rate and Gold Price 1975-2026](images/02a_distributions.png)
 ##### Interpretation
 LKR price: extremely right-skewed — the 1975-1977 pegged-rate era produces a long flat run near zero, and the 2022 crisis adds an extreme tail.
 Gold price: right-skewed across a much wider range now that 50 years of history are included, from the ~$300s in the 1970s-90s up to the >$5,000 levels reached by 2026.
