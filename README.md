@@ -23,7 +23,7 @@ Further details on each dataset are documented in [raw.md](data/raw.md), and the
 
 After merging the USD/LKR and gold datasets, a set of automated validity tests were run to confirm the merged file is correct. Seven dates were picked from across the full 1975–2026 date range, their values were retrieved from the originalraw source files, and then compared against the same dates in the merged dataset. All values matched exactly. Nine additional structural checks confirmed no missing values, no duplicate dates, correct row count (12,680), sorted chronological index, and correct start and end dates. All 16 tests passed.
 
-The test code is included at the end of `code/Cleaning_Merging.ipynb`[Cleaning_Merging.ipynb](code/Cleaning_Merging.ipynb).
+The test code is included at the end of [Cleaning_Merging.ipynb](code/Cleaning_Merging.ipynb).
 
 ### USD/LKR Exchange Rate and Gold Price Overview (1975–2026)
 
