@@ -66,16 +66,46 @@ Across the full 50-year history, gold shows no stable, always-present linear rel
 
 ### Feature Engineering
 
-Feature engineering is the process of creating new input variables from the raw data to help the models learn patterns more effectively. Using the cleaned dataset of 12,680 daily observations spanning 1975 to 2026, created 48 features across several categories.
+The feature engineering notebook [Feature_engineering.ipynb](code/Feature_engineering.ipynb) transforms the cleaned merged dataset of 12,680 daily observations into a rich set of 48 input features across seven categories, ready for model training. The full process is described below.
 
-First, calculated the **log returns** for both the USD/LKR exchange rate and gold price - these measure the daily percentage change in price and are used instead of raw prices because they are statistically stable over time, which is a requirement for the models going to build.
+#### Why Feature Engineering?
 
-Next, added **technical indicators** for both the exchange rate and gold price. These are standard signals used in financial analysis to capture trend, momentum, and volatility. For the USD/LKR rate, computed moving averages (SMA and EMA), RSI (a momentum indicator), MACD (a trend signal), Bollinger Bands (a volatility measure), and ATR (average daily trading range). The same set of indicators was also computed for gold, since gold's own momentum and volatility may carry useful signals for predicting the exchange rate.
+Raw price data alone is not sufficient for machine learning models to learn meaningful patterns. Feature engineering creates additional signals from the raw data - capturing trend direction, momentum, volatility, and delayed relationships - giving the models a much richer and more informative view of market behaviour on any given day.
 
-Then added **lagged gold features** - copies of gold's price and returns shifted back by 1 to 5 days. This allows the models to detect any delayed effect that gold movements may have on the LKR, which cannot be captured by a simple same-day comparison.
+#### Features Created
 
-Also included **rolling volatility features** - the standard deviation of daily returns over the past 10 and 30 days for both series. These give the model a direct measure of how turbulent or calm the recent market environment has been, which is particularly important given the extreme volatility shifts seen in the LKR around the 2022 economic crisis.
+**Log Returns** - Log returns were computed for both the USD/LKR closing price and the gold closing price using the formula log(Pt / Pt-1). Log returns convert the non-stationary raw price series into stationary daily percentage changes, which is a prerequisite for ARIMA-based modelling and ensures consistent gradient behaviour in deep learning models.
 
-Finally, added **calendar features** (day of the week, month, and quarter) to capture any seasonal patterns, and created the **target variables** - the next day's USD/LKR closing price and log return — which are what the models will learn to predict.
+**USD/LKR Technical Indicators** - Six families of technical indicators were derived from the USD/LKR OHLC data: Simple Moving Averages (SMA-10, SMA-30) to capture trend direction; Exponential Moving Averages (EMA-10, EMA-30) which weight recent prices more heavily; RSI-14 (momentum oscillator ranging 0–100); MACD with signal line and histogram (trend-following momentum); Bollinger Bands (upper, lower, and width - measuring volatility regime); and ATR-14 (average daily trading range volatility).
 
-After removing a small number of rows at the start and end of the dataset that could not be computed due to rolling window warm-up periods, the final feature-engineered dataset contains **12,646 rows and 48 columns**, ready for model training and save as usd_lkr_gold_features.csv in google drive.
+**Gold Technical Indicators** - The same set of indicators (SMA-10, SMA-30, RSI-14, MACD, Bollinger Band width, ATR-14) was also derived from the gold OHLC data. Gold's own momentum and volatility signals may carry predictive information for the LKR beyond the raw gold price level alone - particularly during periods where gold's internal dynamics precede broader market stress.
+
+**Lagged Gold Features** - Gold closing price and gold log returns were lagged by 1 to 5 days, creating 10 lagged features in total. This allows the models to detect any delayed effect of gold price movements on the USD/LKR rate, motivated by the crisis-dependent relationship identified in the Granger causality analysis.
+
+**Rolling Volatility Features** - The rolling standard deviation of log returns was computed over 10-day and 30-day windows for both series (lkr_vol_10, lkr_vol_30, gold_vol_10, gold_vol_30). These features give the models explicit information about how turbulent the recent market environment has been, directly capturing the volatility clustering patterns observed in the EDA stage.
+
+**Calendar Features** - Day of the week (0=Monday, 4=Friday), month (1–12), and quarter (1–4) were included to capture any residual seasonal or day-of-week patterns in exchange rate behaviour not already captured by the technical indicators.
+
+**Target Variables** - Two target variables were created by shifting the series forward by one day: `target_lkr_returns` (next day's log return) and `target_lkr_close` (next day's closing price).
+
+#### Feature Summary
+
+| Category | Count |
+|---|---|
+| Log returns | 2 |
+| LKR technical indicators | 12 |
+| Gold technical indicators | 7 |
+| Lagged gold features | 10 |
+| Rolling volatility | 4 |
+| Calendar features | 3 |
+| Raw OHLC (retained) | 8 |
+| Target variables | 2 |
+| **Total** | **48** |
+
+#### Output
+
+After removing 30 rows at the start of the dataset attributable to rolling window warm-up periods and 1 row at the end due to the one-day forward shift on the target variable, the final feature-engineered dataset contains **12,646 rows and 48 columns** with no missing values, saved to `data/processed/usd_lkr_gold_features.csv`.
+
+Finally, added **calendar features** (day of the week, month, and quarter) to capture any seasonal patterns, and created the **target variables** - the next day's USD/LKR closing price and log return - which are what the models will learn to predict.
+
+After removing a small number of rows at the start and end of the dataset that could not be computed due to rolling window warm-up periods, the final feature-engineered dataset contains **12,646 rows and 48 columns**, ready for model training and saved as [usd_lkr_gold_features.csv](data/usd_lkr_gold_features.csv) in Google Drive.
