@@ -109,3 +109,30 @@ After removing 30 rows at the start of the dataset attributable to rolling windo
 Finally, added **calendar features** (day of the week, month, and quarter) to capture any seasonal patterns, and created the **target variables** - the next day's USD/LKR closing price and log return - which are what the models will learn to predict.
 
 After removing a small number of rows at the start and end of the dataset that could not be computed due to rolling window warm-up periods, the final feature-engineered dataset contains **12,646 rows and 48 columns**, ready for model training and saved as [usd_lkr_gold_features.csv](data/usd_lkr_gold_features.csv) in Google Drive.
+
+### Model Development 
+[Model.ipynb](code/Model.ipynb)
+
+This notebook implements the full model development pipeline for the hybrid ensemble forecasting system, covering six individual models across three stages.
+
+**Stage 1 - Statistical models:** ARIMA (univariate baseline) is fitted using auto_arima with AIC-based order selection, identifying ARIMA(1,1,5) as the optimal specification. ARIMAX extends ARIMA by incorporating gold log returns and lagged gold returns at days 3 and 5 as exogenous regressors. GARCH(1,1) is fitted on ARIMA residuals to model time-varying volatility and generate confidence intervals for the final ensemble.
+
+**Stage 2 - Deep learning models:** LSTM and GRU networks are trained on 30-day lookback sequences using a two-layer architecture (64+32 units), RMSprop optimiser, and early stopping with patience of 10 epochs.
+
+**Stage 3 - Gradient-boosted trees:** XGBoost is trained on the full flat feature set (500 trees, max depth 4) with early stopping on validation RMSE.
+
+All models are evaluated on the held-out test set (2022–2026) using RMSE and MAE. 
+
+### Individual Model Results (Test Set 2022–2026)
+
+| Model | RMSE | MAE |
+|---|---|---|
+| ARIMA | 0.007943 | 0.002872 |
+| GARCH(1,1) | 0.007943 | 0.002872 |
+| XGBoost | 0.007960 | 0.002923 |
+| ARIMAX | 0.008019 | 0.003293 |
+| LSTM | 0.014709 | 0.008308 |
+| GRU | 0.038416 | 0.032279 |
+
+Results revealed that the statistical models outperformed the deep learning models on this dataset. ARIMA achieved the lowest RMSE (0.007943) and MAE (0.002872), establishing a strong statistical baseline. XGBoost produced comparable results (RMSE: 0.007960), confirming that gradient boosted trees can match classical statistical models for this exchange rate pair. ARIMAX marginally underperformed ARIMA despite the addition of gold features, which is consistent with the Granger causality findings in the EDA stage, the gold-LKR relationship is non-linear and therefore not fully captured by a linear exogenous regressor. Both LSTM and GRU underperformed the statistical baselines, with early stopping triggering at epoch 20 and epoch 10 respectively, suggesting the models were undertrained given the relatively short validation period (775 rows) and the structural break introduced by the 2022 Sri Lanka economic crisis, an extreme out-of-distribution event with no historical precedent in the 43-year training set. These individual model limitations directly motivate the hybrid ensemble in the next stage, where combining predictions from all models is expected to produce a more robust and accurate forecast than any single model alone.
+
