@@ -123,7 +123,7 @@ This notebook implements the full model development pipeline for the hybrid ense
 
 All models are evaluated on the held-out test set (2022–2026) using RMSE and MAE. 
 
-### Individual Model Results (Test Set 2022–2026)
+#### Individual Model Results (Test Set 2022–2026)
 
 | Model | RMSE | MAE |
 |---|---|---|
