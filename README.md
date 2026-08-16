@@ -136,3 +136,23 @@ All models are evaluated on the held-out test set (2022–2026) using RMSE and M
 
 Results revealed that the statistical models outperformed the deep learning models on this dataset. ARIMA achieved the lowest RMSE (0.007943) and MAE (0.002872), establishing a strong statistical baseline. XGBoost produced comparable results (RMSE: 0.007960), confirming that gradient boosted trees can match classical statistical models for this exchange rate pair. ARIMAX marginally underperformed ARIMA despite the addition of gold features, which is consistent with the Granger causality findings in the EDA stage, the gold-LKR relationship is non-linear and therefore not fully captured by a linear exogenous regressor. Both LSTM and GRU underperformed the statistical baselines, with early stopping triggering at epoch 20 and epoch 10 respectively, suggesting the models were undertrained given the relatively short validation period (775 rows) and the structural break introduced by the 2022 Sri Lanka economic crisis, an extreme out-of-distribution event with no historical precedent in the 43-year training set. These individual model limitations directly motivate the hybrid ensemble in the next stage, where combining predictions from all models is expected to produce a more robust and accurate forecast than any single model alone.
 
+### Hybrid Ensemble and Ablation Study 
+[Hybrid_ensemble.ipynb](code/Hybrid_ensemble.ipynb)
+
+This notebook implements Chapter 7 of the project - combining the six individual model predictions from the modelling stage into a hybrid ensemble and conducting a formal ablation study to measure the contribution of the gold price feature.
+
+The ensemble uses an inverse-RMSE weighting strategy, assigning higher influence to better-performing models automatically. Five ensemble combinations were tested to identify the optimal configuration. The best performing ensemble combined the three strongest individual models — ARIMA, ARIMAX, and XGBoost, achieving RMSE of 0.008056 and MAE of 0.002978. GARCH-derived 95% confidence intervals are applied around the ensemble predictions, widening during high-volatility periods and narrowing during calm periods.
+
+The ablation study compares forecast accuracy with and without gold-derived features. While the marginal difference in RMSE between the with-gold and without-gold configurations is negligible at the linear model level, the XGBoost feature importance analysis shows that 13 of the top 20 most influential features are gold-derived — with gold Bollinger Band width ranking first overall. This confirms that gold carries meaningful predictive signal that non-linear models can exploit, consistent with the crisis-dependent relationship identified in the EDA stage.
+
+#### Ensemble Results Summary (Test Set 2022–2026)
+
+| Model / Ensemble | Type | RMSE | MAE |
+|---|---|---|---|
+| ARIMA | Individual | 0.007943 | 0.002872 |
+| XGBoost | Individual | 0.007960 | 0.002923 |
+| Best 3 (ARIMA + ARIMAX + XGBoost) | Ensemble | 0.008056 | 0.002978 |
+| Hybrid Ensemble (weighted) | Ensemble | 0.008395 | 0.003742 |
+| Equal weight (all 5 models) | Ensemble | 0.010627 | 0.007134 |
+| GRU | Individual | 0.038416 | 0.032279 |
+
