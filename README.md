@@ -4,7 +4,7 @@
 **Student:** Hirushani Umayanga | **Student ID:** 25034737
 **Supervisor:** Alireza Bolhari | **Academic Year:** 2025–2026
  
----
+
  
 ## Project Overview
  
@@ -12,13 +12,13 @@ This project develops and evaluates a multi-stage hybrid ensemble forecasting mo
  
 The model is trained on 50 years of daily USD/LKR OHLC data (1975–2026) and evaluated on the 2022 Sri Lanka economic crisis period — the most extreme structural break in the dataset's history. A formal ablation study quantifies gold's marginal predictive contribution. An interactive five-page Power BI dashboard translates findings into stakeholder-accessible visualisations.
  
----
+
  
 ## Research Question
  
 Can a multi-stage hybrid ensemble model incorporating technical indicators and gold price as an exogenous macroeconomic signal achieve superior USD/LKR forecasting accuracy compared to individual baseline models - and does gold price contribute meaningfully to that accuracy?
  
----
+
  
 ## Key Results (Test Set 2022–2026)
  
@@ -37,7 +37,7 @@ Can a multi-stage hybrid ensemble model incorporating technical indicators and g
 **Ablation Study:** With gold RMSE = 0.008060 | Without gold RMSE = 0.008050
 Despite negligible linear difference, 13 of the top 20 XGBoost features are gold-derived — with `gold_bb_width` ranking #1 overall — confirming gold's non-linear predictive contribution.
  
----
+
  
 ## Repository Structure
  
@@ -66,7 +66,7 @@ USD_LKR_forecasting/
 └── README.md
 ```
  
----
+
  
 ## Data Sources
  
@@ -76,7 +76,7 @@ USD_LKR_forecasting/
 | Gold Spot Price XAUUSD (OHLC) | [Stooq/Barchart](https://stooq.com/q/?s=xauusd) | 1793–2026 | 15,263 |
 | **Merged Dataset** | Inner join on Date | **1975–2026** | **12,680** |
  
----
+
  
 ## Feature Engineering
  
@@ -94,7 +94,7 @@ USD_LKR_forecasting/
 | Target variables | target_lkr_returns, target_lkr_close | 2 |
 | **Total** | | **48** |
  
----
+
  
 ## Train / Validation / Test Split
  
@@ -104,7 +104,7 @@ USD_LKR_forecasting/
 | Validation | 2019–2021 | 775 | 6.1% | COVID-19 pandemic |
 | Test | 2022–2026 | 1,107 | 8.7% | 2022 Sri Lanka crisis |
  
----
+
  
 ## Model Architecture
  
@@ -119,20 +119,20 @@ USD_LKR_forecasting/
 ### Hybrid Ensemble
 - Inverse-RMSE weighted average of all five models
 - Best configuration: ARIMA + ARIMAX + XGBoost (equal weight)
----
+
  
 ## Google Drive
  
 All model outputs, saved models, and Power BI data files are available on Google Drive:
  
-📁 **[Access Google Drive Project Folder](https://drive.google.com/drive/folders/1e7FaOphmI8WkzkywyxhbbaFPHcPQbe1V?usp=sharing)**
+**[Access Google Drive Project Folder](https://drive.google.com/drive/folders/1e7FaOphmI8WkzkywyxhbbaFPHcPQbe1V?usp=sharing)**
  
 Contents:
 - `data/processed/` - cleaned and feature-engineered datasets
 - `models/` - saved LSTM (`lstm_model.h5`) and GRU (`gru_model.h5`) models
 - `outputs/` - all prediction CSVs, model results, and chart images
 - `powerbi/` - dashboard CSV files
----
+
  
 ## Tools and Technologies
  
@@ -149,13 +149,13 @@ Contents:
 | Power BI Desktop | Interactive dashboard |
 | GitHub | Version control |
  
----
+
  
 ## Data Validity Testing
  
 After merging the two datasets, 7 date-based test cases and 9 structural integrity checks were run to confirm the merged file is correct. All 16 tests passed - values match exactly across raw source files and the merged dataset for all test dates spanning 1975 to 2026. Test code is at the end of `code/Cleaning_Merging.ipynb`.
  
----
+
  
 ## How to Run
  
