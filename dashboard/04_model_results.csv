@@ -1,0 +1,13 @@
+Model,Type,RMSE,MAE
+ARIMA,Individual,0.007943,0.002872
+"GARCH(1,1)",Individual,0.007943,0.002872
+XGBoost,Individual,0.00796,0.002923
+ARIMAX,Individual,0.008019,0.003293
+Best 3 Ensemble,Ensemble,0.008056,0.002978
+Statistical + XGBoost,Ensemble,0.008056,0.002978
+Statistical only,Ensemble,0.008065,0.003067
+Hybrid Ensemble (weighted),Ensemble,0.008395,0.003742
+Equal weight ensemble,Ensemble,0.010627,0.007134
+LSTM,Individual,0.014709,0.008308
+Deep learning only,Ensemble,0.018331,0.015037
+GRU,Individual,0.038416,0.032279
