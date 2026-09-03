@@ -1,8 +1,8 @@
 # A Multi-Stage Hybrid Ensemble Architecture for USD/LKR Exchange Rate Forecasting
  
 **MSc Data Science | University of the West of England, Bristol**
-**Student:** Hirushani Umayanga | **Student ID:** 25034737
-**Supervisor:** Alireza Bolhari | **Academic Year:** 2025–2026
+**Student:** Hirushani Umayanga 
+**Supervisor:** Dr. Alireza Bolhari 
  
 
  
@@ -10,15 +10,11 @@
  
 This project develops and evaluates a multi-stage hybrid ensemble forecasting model for the USD/LKR exchange rate, combining statistical models (ARIMA, ARIMAX, GARCH), deep learning architectures (LSTM, GRU), and gradient boosted trees (XGBoost). Gold spot price is incorporated as a novel exogenous predictive feature, motivated by its well-documented safe-haven relationship with emerging market currencies during periods of financial stress.
  
-The model is trained on 50 years of daily USD/LKR OHLC data (1975–2026) and evaluated on the 2022 Sri Lanka economic crisis period — the most extreme structural break in the dataset's history. A formal ablation study quantifies gold's marginal predictive contribution. An interactive five-page Power BI dashboard translates findings into stakeholder-accessible visualisations.
- 
-
+The model is trained on 50 years of daily USD/LKR OHLC data (1975-2026) and evaluated on the 2022 Sri Lanka economic crisis period, the most extreme structural break in the dataset's history. A formal ablation study quantifies gold's marginal predictive contribution. An interactive five-page Power BI dashboard translates findings into stakeholder-accessible visualisations.
  
 ## Research Question
  
-Can a multi-stage hybrid ensemble model incorporating technical indicators and gold price as an exogenous macroeconomic signal achieve superior USD/LKR forecasting accuracy compared to individual baseline models - and does gold price contribute meaningfully to that accuracy?
- 
-
+Can a multi-stage hybrid ensemble model incorporating technical indicators and gold price as an exogenous macroeconomic signal achieve superior USD/LKR forecasting accuracy compared to individual baseline models, and does gold price contribute meaningfully to that accuracy?
  
 ## Key Results (Test Set 2022–2026)
  
@@ -35,9 +31,7 @@ Can a multi-stage hybrid ensemble model incorporating technical indicators and g
 | GRU | Individual | 0.038416 | 0.032279 |
  
 **Ablation Study:** With gold RMSE = 0.008060 | Without gold RMSE = 0.008050
-Despite negligible linear difference, 13 of the top 20 XGBoost features are gold-derived — with `gold_bb_width` ranking #1 overall — confirming gold's non-linear predictive contribution.
- 
-
+Despite negligible linear difference, 13 of the top 20 XGBoost features are gold-derived — with `gold_bb_width` ranking #1 overall, confirming gold's non-linear predictive contribution.
  
 ## Repository Structure
  
