@@ -16,6 +16,7 @@ This folder contains the interactive Power BI dashboard and all CSV data files u
 ## Dashboard Pages
 
 **Page 1 - Historical Overview (1975-2026)**
+![Historical Overview](../images/Page1.png)
 Displays 50 years of USD/LKR and gold price history with KPI cards showing latest rates, total trading days, and dataset range. Interactive date slicer allows filtering to any custom period.
 
 **Page 2 - Price and Volatility (2022–2026)**
