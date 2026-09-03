@@ -7,6 +7,7 @@ This folder contains the interactive Power BI dashboard and all CSV data files u
 | File | Description |
 |---|---|
 | `USD_LKR_Forecasting_Dashboard.pbix` | Power BI dashboard file |
+| `powerbi_export.ipynb` | Export five csv files and save in google drive |
 | `01_predictions.csv` | Actual vs predicted returns + GARCH confidence intervals |
 | `02_historical_prices.csv` | Full 1975–2026 USD/LKR and gold price history |
 | `03_technical_indicators.csv` | RSI, MACD, Bollinger Bands (test period 2022–2026) |
