@@ -138,7 +138,13 @@ Contents:
 ## Data Validity Testing
  
 After merging the two datasets, 7 date-based test cases and 9 structural integrity checks were run to confirm the merged file is correct. All 16 tests passed - values match exactly across raw source files and the merged dataset for all test dates spanning 1975 to 2026. Test code is at the end of `code/Cleaning_Merging.ipynb`.
- 
+
+## Reference Management
+
+References were managed using [Zotero](https://www.zotero.org/) with UWE Harvard citation style.
+
+![Zotero Reference Library](images/Zotero.png)
+
 ## How to Run
  
 1. Clone the repository:
