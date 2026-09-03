@@ -31,7 +31,7 @@ Can a multi-stage hybrid ensemble model incorporating technical indicators and g
 | GRU | Individual | 0.038416 | 0.032279 |
  
 **Ablation Study:** With gold RMSE = 0.008060 | Without gold RMSE = 0.008050
-Despite negligible linear difference, 13 of the top 20 XGBoost features are gold-derived — with `gold_bb_width` ranking #1 overall, confirming gold's non-linear predictive contribution.
+Despite negligible linear difference, 13 of the top 20 XGBoost features are gold-derived - with `gold_bb_width` ranking #1 overall, confirming gold's non-linear predictive contribution.
  
 ## Repository Structure
  
@@ -46,11 +46,12 @@ USD_LKR_forecasting/
 ├── data/
 │   ├── raw/                         # Original CSV files from Investing.com and Stooq
 │   └── processed/
-│       ├── usd_lkr_gold_cleaned.csv     # Merged cleaned dataset (12,680 rows × 8 cols)
-│       └── usd_lkr_gold_features.csv    # Feature-engineered dataset (12,646 rows × 48 cols)
+│       ├── usd_lkr_gold_cleaned.csv     # Merged cleaned dataset (12,680 rows x 8 cols)
+│       └── usd_lkr_gold_features.csv    # Feature-engineered dataset (12,646 rows x 48 cols)
 ├── dashboard/
 │   ├── README.md                    # Dashboard page descriptions
 │   ├── USD_LKR_Forecasting_Dashboard.pbix
+│   ├── powerbi_export.ipynb
 │   ├── 01_predictions.csv
 │   ├── 02_historical_prices.csv
 │   ├── 03_technical_indicators.csv
@@ -60,8 +61,6 @@ USD_LKR_forecasting/
 └── README.md
 ```
  
-
- 
 ## Data Sources
  
 | Dataset | Source | Period | Rows |
@@ -69,8 +68,6 @@ USD_LKR_forecasting/
 | USD/LKR Exchange Rate (OHLC) | [Investing.com](https://uk.investing.com/currencies/usd-lkr-historical-data) | 1975–2026 | 12,819 |
 | Gold Spot Price XAUUSD (OHLC) | [Stooq/Barchart](https://stooq.com/q/?s=xauusd) | 1793–2026 | 15,263 |
 | **Merged Dataset** | Inner join on Date | **1975–2026** | **12,680** |
- 
-
  
 ## Feature Engineering
  
@@ -88,8 +85,6 @@ USD_LKR_forecasting/
 | Target variables | target_lkr_returns, target_lkr_close | 2 |
 | **Total** | | **48** |
  
-
- 
 ## Train / Validation / Test Split
  
 | Split | Period | Rows | Proportion | Key Events |
@@ -97,8 +92,6 @@ USD_LKR_forecasting/
 | Training | 1975–2018 | 10,797 | 85.2% | 1977 liberalisation, 2008 GFC |
 | Validation | 2019–2021 | 775 | 6.1% | COVID-19 pandemic |
 | Test | 2022–2026 | 1,107 | 8.7% | 2022 Sri Lanka crisis |
- 
-
  
 ## Model Architecture
  
@@ -114,7 +107,7 @@ USD_LKR_forecasting/
 - Inverse-RMSE weighted average of all five models
 - Best configuration: ARIMA + ARIMAX + XGBoost (equal weight)
 
- 
+
 ## Google Drive
  
 All model outputs, saved models, and Power BI data files are available on Google Drive:
@@ -126,7 +119,6 @@ Contents:
 - `models/` - saved LSTM (`lstm_model.h5`) and GRU (`gru_model.h5`) models
 - `outputs/` - all prediction CSVs, model results, and chart images
 - `powerbi/` - dashboard CSV files
-
  
 ## Tools and Technologies
  
@@ -142,14 +134,10 @@ Contents:
 | scikit-learn | MinMaxScaler and preprocessing |
 | Power BI Desktop | Interactive dashboard |
 | GitHub | Version control |
- 
-
- 
+  
 ## Data Validity Testing
  
 After merging the two datasets, 7 date-based test cases and 9 structural integrity checks were run to confirm the merged file is correct. All 16 tests passed - values match exactly across raw source files and the merged dataset for all test dates spanning 1975 to 2026. Test code is at the end of `code/Cleaning_Merging.ipynb`.
- 
-
  
 ## How to Run
  
