@@ -11,6 +11,9 @@
 This project develops and evaluates a multi-stage hybrid ensemble forecasting model for the USD/LKR exchange rate, combining statistical models (ARIMA, ARIMAX, GARCH), deep learning architectures (LSTM, GRU), and gradient boosted trees (XGBoost). Gold spot price is incorporated as a novel exogenous predictive feature, motivated by its well-documented safe-haven relationship with emerging market currencies during periods of financial stress.
  
 The model is trained on 50 years of daily USD/LKR OHLC data (1975-2026) and evaluated on the 2022 Sri Lanka economic crisis period, the most extreme structural break in the dataset's history. A formal ablation study quantifies gold's marginal predictive contribution. An interactive five-page Power BI dashboard translates findings into stakeholder-accessible visualisations.
+
+### Project Flowchart
+![Flow chart](images/UML_System_Diagram.png)
  
 ## Research Question
  
